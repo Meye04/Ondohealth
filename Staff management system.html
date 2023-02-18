@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hospital Staff Management System</title>
+    
+  </head>
+  <body>
+    <header>
+      <h1>Hospital Staff Management System</h1>
+    </header>
+    <main>
+      <form id="staff-form">
+        <h2>Add Staff</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" required>
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" required>
+        <button type="submit" id="submit">Add Staff</button>
+      </form>
+      <h2>Staff List</h2>
+      <table id="staff-list">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Department</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </main>
+    <style type="text/css">
+    * {
+    box-sizing: border-box;
+    }
+    
+    body {
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    }
+    
+    header {
+    background-color: tomato;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    }
+    
+    main {
+    margin: 2rem;
+    }
+    
+    h1, h2 {
+    color: black;
+    margin-bottom: 1rem;
+    }
+    
+    form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    }
+    
+    form input[type="text"] {
+    border: 1px solid black;
+    padding: 0.5rem;
+    width: 100%;
+    }
+    
+    form button {
+    background-color: tomato;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    }
+    
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+    
+    table th, table td {
+    border: 1px solid black;
+    padding: 0.5rem;
+    text-align: center;
+    }
+    
+    table th {
+    background-color: tomato;
+    color: white;
+    }
+    
+    table td:last-child {
+    display: flex;
+    justify-content: center;
+    }
+    
+    table td:last-child button {
+    background-color: black;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+    }
+    
+    @media only screen and (max-width: 960px) {
+    /* CSS styles for mobile devices */
+    body {
+    font-size: 14px;
+    }
+    .menu {
+    display: none;
+    }
+    }
+    
+    @media only screen and (min-width: 961px) {
+    /* CSS styles for desktop devices */
+    body {
+    font-size: 16px;
+    }
+    .menu {
+    display: block;
+    }
+    }
+    
+    
+    </style>
+<script type="text/javascript">
+function addStaff() {
+  const name = document.getElementById('name').value;
+  const position = document.getElementById('position').value;
+  const department = document.getElementById('department').value;
+
+  const staff = {
+    name,
+    position,
+    department,
+  };
+
+  let staffList = getStaffList();
+  staffList.push(staff);
+  localStorage.setItem('staffList', JSON.stringify(staffList));
+}
+
+
+function getStaffList() {
+  let staffList = localStorage.getItem('staffList');
+  if (staffList) {
+    staffList = JSON.parse(staffList);
+  } else {
+    staffList = [];
+  }
+  return staffList;
+}
+
+
+function displayStaffList() {
+  let staffList = getStaffList();
+  let tbody = document.querySelector('#staff-list tbody');
+  tbody.innerHTML = '';
+  staffList.forEach((staff, index) => {
+    let row = document.createElement('tr');
+    let nameTd = document.createElement('td');
+    let positionTd = document.createElement('td');
+    let departmentTd = document.createElement('td');
+    let actionsTd = document.createElement('td');
+    let editButton = document.createElement('button');
+    let deleteButton = document.createElement('button');
+
+    nameTd.innerText = staff.name;
+    positionTd.innerText = staff.position;
+    departmentTd.innerText = staff.department;
+    editButton.innerText = 'Edit';
+    deleteButton.innerText = 'Delete';
+
+    editButton.addEventListener('click', () => {
+      editStaff(index);
+    });
+
+    deleteButton.addEventListener('click', () => {
+      deleteStaff(index);
+    });
+
+    actionsTd.appendChild(editButton);
+    actionsTd.appendChild(deleteButton);
+
+    row.appendChild(nameTd);
+    row.appendChild(positionTd);
+    row.appendChild(departmentTd);
+    row.appendChild(actionsTd);
+
+    tbody.appendChild(row);
+  });
+}
+
+
+function editStaff(index) {
+  let staffList = getStaffList();
+  let staff = staffList[index];
+  document.getElementById('name').value = staff.name;
+  document.getElementById('position').value = staff.position;
+  document.getElementById('department').value = staff.department;
+  document.getElementById('submit').value = 'Update';
+  document.getElementById('submit').setAttribute('data-index', index);
+}
+
+function updateStaff(index) {
+  let staffList = getStaffList();
+  let name = document.getElementById('name').value;
+  let position = document.getElementById('position').value;
+  let department = document.getElementById('department').value;
+  let staff = {
+    name,
+    position,
+    department,
+  };
+  staffList[index] = staff;
+  localStorage.setItem('staffList', JSON.stringify(staffList));
+  document.getElementById('name').value = '';
+  document.getElementById('position').value = '';
+  document.getElementById('department').value = '';
+  document.getElementById('submit').value = 'Add';
+  displayStaffList();
+}
+
+function deleteStaff(index) {
+  let staffList = getStaffList();
+  staffList.splice(index, 1);
+  localStorage.setItem('staffList', JSON.stringify(staffList));
+  displayStaffList();
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const submitButton = document.getElementById('submit');
+  submitButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    let index = submitButton.getAttribute('data-index');
+    if (index) {
+      updateStaff(index);
+      submitButton.removeAttribute('data-index');
+    } else {
+      addStaff();
+    }
+    displayStaffList();
+  });
+});
+
+
+
+</script>
+  </body>
+</html>
