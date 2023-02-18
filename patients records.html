@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pateint Record app</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Meta tags for description and keywords -->
+     <meta name="description" content="A hospital recommendation system for the ondo state in Nigeria.">
+     <meta name="keywords" content="OndoHealth">
+     
+     
+     <link rel="stylesheet" href="hospitalstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+     
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+       
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+       
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+       <!-- Font Awesome Icon Library -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+       
+       
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+       <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+       
+       <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+       
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+       <script type="text/javascript" src="https://unpkg.com/jso/dist/jso.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+       <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+       
+       
+       
+  </head>
+  <body>
+  
+  
+  
+
+  
+  
+
+  <div id="header">
+ <!-- Top Navigation Menu -->
+ <div class="topnav">
+ 
+ <img src="ondo.png" alt="futa logo" id="logo">
+ <!-- Navigation links (hidden by default) -->
+ <div id="myLinks">
+ <a href="#news" class="fa fa-home">Home</a>
+ <a href="#contact" class="fas fa-clinic-medical">Hospitals</a>
+ <a href="#constultation" class="fas fa-bed">Consultation</a>
+  <a href="#diagnosis" class="fas fa-syringe">Online Diagnosis </a>
+   <a href="#report" class="far fa-address-book">Patient Reports</a>
+    <a href="#database"class="fas fa-database">Hospital Database</a>
+ </div>
+ <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+ <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+ <i class="fa fa-bars"></i>
+ </a>
+ </div>
+ <script type="text/javascript">
+ /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+ function myFunction() {
+ var x = document.getElementById("myLinks");
+ if (x.style.display === "block") {
+ x.style.display = "none";
+ } else {
+ x.style.display = "block";
+ }
+ }
+ </script>
+  
+  <h1>OndoHealth</h1>
+  <input type="text" placeholder="Search..">
+  </div>
+  
+    <style>
+      /* Style the input fields and buttons */
+      input, button {
+        font-size: 1em;
+        padding: 0.5em;
+        margin: 0.5em;
+      
+      }
+    </style>
+ 
+  
+    <!-- Create a form for accepting user input -->
+    <form id="myForm">
+      <input type="text" id="name" placeholder="Patient Name" />
+      <input type="text" id="age" placeholder="Age" />
+      <input type="text" id="temperature" placeholder="Temperature (F)" />
+      <input type="text" id="heartRate" placeholder="Heart Rate (bpm)" />
+      <input type="text" id="bloodPressure" placeholder="Blood Pressure (mmHg)" />
+      <input type="text" id="oxygenSaturation" placeholder="Oxygen Saturation (%)" />
+      <input type="text" id="doctor" placeholder="Doctor's Name" />
+      <input type="text" id="comments" placeholder="Comments" />
+      <input type="text" id="drugs" placeholder="Prescribed Drugs" />
+      <input type="text" id="date" placeholder="Date (mm/dd/yy)"/>
+      <input type="text" id="time" placeholder="Time (hh:mm)" />
+      <input type="text" id="status" placeholder="Patient Status" />
+      <button type="button" onclick="createForm()">Create</button>
+          </form>
+      
+          <!-- Create a div to display the forms -->
+          <div id="formList"></div>
+      
+          <script>
+            // Check if local storage is supported by the browser
+            if (typeof(Storage) !== "undefined") {
+      // If the key "forms" does not exist in local storage, create it
+      if (!localStorage.getItem("forms")) {
+        localStorage.setItem("forms", JSON.stringify([]));
+      }
+            } else {
+      // If local storage is not supported, show an error message
+      alert("Sorry, your browser does not support local storage. This app may not work properly.");
+            }
+      
+            // Function to create a form
+            function createForm() {
+      // Get the data from the form
+      var name = document.getElementById("name").value;
+      var age = document.getElementById("age").value;
+      var temperature = document.getElementById("temperature").value;
+      var heartRate = document.getElementById("heartRate").value;
+      var bloodPressure = document.getElementById("bloodPressure").value;
+      var oxygenSaturation = document.getElementById("oxygenSaturation").value;
+      var doctor = document.getElementById("doctor").value;
+      var comments = document.getElementById("comments").value;
+      var drugs = document.getElementById("drugs").value;
+      var date = document.getElementById("date").value;
+      var time = document.getElementById("time").value;
+      var status = document.getElementById("status").value;
+      
+      // Create a new form object with the data
+      var newForm = {
+        name: name,
+        age: age,
+        temperature: temperature,
+        heartRate: heartRate,
+        bloodPressure: bloodPressure,
+        oxygenSaturation: oxygenSaturation,
+        doctor: doctor,
+        comments: comments,
+        drugs: drugs,
+        date: date,
+        time: time,
+        status: status
+      };
+      
+      // Get the forms array from local storage
+      var forms = JSON.parse(localStorage.getItem("forms"));
+      
+      // Add the new form to the array
+      forms.push(newForm);
+      
+      // Save the updated array to local storage
+      localStorage.setItem("forms", JSON.stringify(forms));
+      
+      // Clear the form fields
+      document.getElementById("name").value = "";
+      document.getElementById("age").value = "";
+      document.getElementById("temperature").value = "";
+      document.getElementById("heartRate").value = "";
+      document.getElementById("bloodPressure").value = "";
+      document.getElementById("oxygenSaturation").value = "";
+      document.getElementById("doctor").value = "";
+      document.getElementById("comments").value ="";
+      document.getElementById("drugs").value = "";
+      document.getElementById("date").value = "";
+      document.getElementById("time").value = "";
+      document.getElementById("status").value = "";
+      
+      // Show the updated list of forms
+      showForms();
+            }
+      
+            // Function to display the forms in the "formList" div
+            function showForms() {
+      // Get the forms array from local storage
+      var forms = JSON.parse(localStorage.getItem("forms"));
+      
+      // Create a string to hold the HTML for the form list
+      var html = "<h2>Form List</h2><ul>";
+      
+      // Loop through the forms array and add each form to the HTML string
+      for (var i = 0; i < forms.length; i++) {
+        var form = forms[i];
+        html += "<li>";
+        html += "Patient Name: " + form.name + "<br>";
+        html += "Age: " + form.age + "<br>";
+        html += "Temperature: " + form.temperature + " F<br>";
+        html += "Heart Rate: " + form.heartRate + " bpm<br>";
+        html += "Blood Pressure: " + form.bloodPressure + " mmHg<br>";
+        html += "Oxygen Saturation: " + form.oxygenSaturation + " %<br>";
+        html += "Doctor's Name: " + form.doctor + "<br>";
+        html += "Comments: " + form.comments + "<br>";
+        html += "Prescribed Drugs: " + form.drugs + "<br>";
+        html += "Date: " + form.date + "<br>";
+        html += "Time: " + form.time + "<br>";
+        html += "Patient Status: " + form.status + "<br>";
+        html += "<button type='button' onclick='readForm(" + i + ")'>Read</button>";
+        html += "<button type='button' onclick='updateForm(" + i + ")'>Update</button>";
+        html += "<button type='button' onclick='deleteForm(" + i + ")'>Delete</button>";
+        html += "</li>";
+      }
+      html += "</ul>";
+      
+      // Set the inner HTML of the "formList" div to the HTML string
+      document.getElementById("formList").innerHTML = html;
+            }
+      
+            // Function to read a form
+            function readForm(index) {
+      // Get the forms array from local storage
+      var forms = JSON.parse(localStorage.getItem("forms"));
+      
+      // Get the form at the specified index
+      var form = forms[index];
+      
+      // Show an alert with the form's information
+      alert("Patient Name: " + form.name + "\nAge: " + form.age + "\nTemperature: " + form.temperature + " F\nHeart Rate: " + form.heartRate + " bpm\nBlood Pressure: " + form.bloodPressure + " mmH" +"g\nOxygen Saturation: " + form.oxygenSaturation + " %\nDoctor's Name: " + form.doctor + "\nComments: " + form.comments + "\nPrescribed Drugs: " + form.drugs + "\nDate: " + form.date + "\nTime: " + form.time + "\nPatient Status: " + form.status);
+      }
+      
+      // Function to update a form
+      function updateForm(index) {
+      // Get the forms array from local storage
+      var forms = JSON.parse(localStorage.getItem("forms"));
+      
+      // Get the form at the specified index
+      var form = forms[index];
+      
+      // Update the form's data
+      form.name = prompt("Enter a new patient name:", form.name);
+      form.age = prompt("Enter a new age:", form.age);
+      form.temperature = prompt("Enter a new temperature (F):", form.temperature);
+      form.heartRate = prompt("Enter a new heart rate (bpm):", form.heartRate);
+      form.bloodPressure = prompt("Enter a new blood pressure (mmHg):", form.bloodPressure);
+      form.oxygenSaturation = prompt("Enter a new oxygen saturation level (%):", form.oxygenSaturation);
+      form.doctor = prompt("Enter a new doctor's name:", form.doctor);
+      form.comments = prompt("Enter new comments:", form.comments);
+      form.drugs = prompt("Enter new prescribed drugs:", form.drugs);
+      form.date = prompt("Enter a new date (mm/dd/yyyy):", form.date);
+      form.time = prompt("Enter a new time (hh:mm):", form.time);
+      form.status = prompt("Enter a new patient status:", form.status);
+      
+      // Save the updated array to local storage
+      localStorage.setItem("forms", JSON.stringify(forms));
+      
+      // Show the updated list of forms
+      showForms();
+      }
+      
+      // Function to delete a form
+      function deleteForm(index) {
+      // Get the forms array from local storage
+      var forms = JSON.parse(localStorage.getItem("forms"));
+      
+      // Remove the form at the specified index
+      forms.splice(index, 1);
+      
+      // Save the updated array to local storage
+      localStorage.setItem("forms", JSON.stringify(forms));
+      
+      // Show the updated list of forms
+      showForms();
+      }
+      
+      // Show the initial list of forms when the page loads
+      showForms();
+      </script>
+      </body>
+      </html>
+      
+     
+      
+      
+      
